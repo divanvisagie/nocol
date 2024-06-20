@@ -1,0 +1,35 @@
+.\" Manpage for nocol
+.TH man 1 "20 June 2024" "0.0.1" "nocol man page"
+.SH NAME
+nocol - strip colors from stdin
+.SH SYNOPSIS
+nocol [OPTION]... [STRING]
+
+nocol [FILE]
+
+cat [FILE] | nocol
+
+ifconfig | nocol
+.SH DESCRIPTION
+nocol is designed to have data piped through it
+
+Strip colors from a string or stream of text.
+
+It takes input containing colored text and outputs plain text by removing any color codes or escape sequences.
+.SH OPTIONS
+.TP
+.B \-h, \--help
+Display this help and exit
+.SH EXAMPLES
+.TP
+.B echo 'hello' | lolcat | nocol
+Strips colors from the output of `lolcat`.
+.TP
+.B nocol \-h
+Displays help and exits.
+.SH COPYRIGHT
+© 2024 Your Name. License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+.SH AUTHOR
+Divan Visagie

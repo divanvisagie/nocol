@@ -1,0 +1,7 @@
+main
+bin
+.vscode
+debug
+runify
+release
+debian_package
