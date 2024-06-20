@@ -1,3 +1,4 @@
+#include <locale.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,6 +45,8 @@ void strip_colors(char *input) {
 }
 
 int main(int argc, char **argv) {
+  setlocale(LC_ALL, "");
+
   Args *args = parse_args(argc, argv);
   if (args->help) {
     printf("%s\n", get_help());
