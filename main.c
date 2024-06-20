@@ -54,6 +54,7 @@ int main(int argc, char **argv) {
     while (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
         strip_colors(buffer);
         printf("%s", buffer);
+        fflush(stdout);
     }
 
     return 0;
