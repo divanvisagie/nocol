@@ -32,6 +32,12 @@ $(shell mkdir -p $(BIN_DIR))
 main:
 	$(CC) $(CFLAGS) main.c $(SOURCES) -o $(BIN_DIR)/$(BIN_NAME) -g $(LDFLAGS)
 
+setup:
+	@if [ "$(PLATFORM)" = "linux" ]; then \
+		sudo apt install libcmocka-dev -y && \
+		sudo apt install valgrind -y; \
+	fi
+
 build:
 	$(CC) $(CFLAGS) main.c $(SOURCES) -o $(BIN_DIR)/$(BIN_NAME) $(LDFLAGS)
 
