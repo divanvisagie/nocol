@@ -20,7 +20,7 @@ char *get_help() {
 }
 
 // Function to strip ANSI color codes
-void strip_colors(char *input) {
+void strip_colors_and_carriage_returns(char *input) {
     char *src = input;
     char *dst = input;
     while (*src) {
@@ -36,6 +36,9 @@ void strip_colors(char *input) {
                     src++;  // Skip the final character (e.g., 'm', 'K')
                 }
             }
+        } else if (*src == '\r') {
+            // Skip carriage return characters
+            src++;
         } else {
             *dst++ = *src++;
         }
