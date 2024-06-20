@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #include "args.h"
+#include "default.h"
 
 #define BUFFER_SIZE 1024
 
@@ -18,30 +19,6 @@ char *get_help() {
          "\n"
          "Examples:\n"
          "  echo 'hello' | lolcat | nocol\n";
-}
-
-void strip_colors(char *input) {
-  char *src = input;
-  char *dst = input;
-  while (*src) {
-    if (*src == '\033' || *src == '\x1b') {
-      src++;
-      if (*src == '[') {
-        src++;
-        while (*src && ((*src >= '0' && *src <= '9') || *src == ';')) {
-          src++;
-        }
-        if (*src) {
-          src++;
-        }
-      }
-    } else if (*src == '\r') {
-      src++;
-    } else {
-      *dst++ = *src++;
-    }
-  }
-  *dst = '\0';
 }
 
 int main(int argc, char **argv) {
