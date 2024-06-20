@@ -20,7 +20,7 @@ char *get_help() {
 }
 
 // Function to strip ANSI color codes
-void strip_colors_and_carriage_returns(char *input) {
+void strip_colors(char *input) {
     char *src = input;
     char *dst = input;
     while (*src) {
