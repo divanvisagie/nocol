@@ -23,11 +23,22 @@ static void test_that_carriage_returns_are_stripped(void **state) {
   assert_string_equal(input, "helloworld");
 }
 
+static void test_prefix_stripper(void **state) {
+  char input[] = "blah-blah: INFO hello";
+  char *output = get_from_prefix(input);
+  assert_string_equal(output, "INFO hello");
+
+  char input2[] = "ERROR: hello";
+  char *output2 = get_from_prefix(input2);
+  assert_string_equal(output2, "ERROR: hello");
+}
+
 // Group all test cases together
 int main(int argc, char *argv[]) {
   const struct CMUnitTest tests[] = {
       cmocka_unit_test(test_that_colors_are_stripped),
       cmocka_unit_test(test_that_carriage_returns_are_stripped),
+      cmocka_unit_test(test_prefix_stripper),
   };
   return cmocka_run_group_tests(tests, NULL, NULL);
 }

@@ -16,6 +16,7 @@ char *get_help() {
          "\n"
          "Options:\n"
          "  -h, --help              Display this help and exit\n"
+         "  -s, --strip-prefix      Strip log prefixes like date or repo names\n"
          "\n"
          "Examples:\n"
          "  echo 'hello' | lolcat | nocol\n";
@@ -33,7 +34,12 @@ int main(int argc, char **argv) {
   char buffer[BUFFER_SIZE];
   while (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
     strip_colors(buffer);
-    printf("%s", buffer);
+    if (args->strip_prefix) {
+      char *tail = get_from_prefix(buffer);
+      printf("%s", tail);
+    } else {
+      printf("%s", buffer);
+    }
     fflush(stdout);
   }
 
