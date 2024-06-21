@@ -1,7 +1,5 @@
 # nocol
 
-## Description
-
 **nocol** is a tool that streams text from a command with the colors stripped from it. While other tools like `ansi2txt` exist, **nocol** supports streaming logs instantly, avoiding long pauses that occur when other tools wait to fill their buffer before writing to something like `tee`. **nocol** was specifically developed to address the use case of piping logs from a Node.js service into a log file in `/tmp` to make them easier to search inside NeoVim. This makes it ideal for working with program runners like Cargo or Yarn that output colored logs.
 
 ## Installation
