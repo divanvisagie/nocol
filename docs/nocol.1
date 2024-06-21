@@ -1,7 +1,7 @@
 .\" Manpage for nocol
-.TH man 1 "20 June 2024" "0.0.2" "nocol man page"
+.TH man 1 "21 June 2024" "0.0.3" "nocol man page"
 .SH NAME
-nocol - strip colors from stdin
+nocol - strip colors and log prefixes from stdin
 .SH SYNOPSIS
 nocol [OPTION]... [STRING]
 
@@ -13,13 +13,16 @@ ifconfig | nocol
 .SH DESCRIPTION
 nocol is designed to have data piped through it
 
-Strip colors from a string or stream of text.
+Strip colors and log prefixes from a string or stream of text.
 
-It takes input containing colored text and outputs plain text by removing any color codes or escape sequences.
+It takes input containing colored text and/or log prefixes and outputs plain text by removing any color codes, escape sequences, or specified log prefixes.
 .SH OPTIONS
 .TP
 .B \-h, \--help
 Display this help and exit
+.TP
+.B \-s, \--strip-prefix
+Strip log prefixes such as "DEBUG", "INFO", "WARN", "ERROR", "FATAL", and "BREAK" from the input.
 .SH EXAMPLES
 .TP
 .B echo 'hello' | lolcat | nocol
@@ -27,6 +30,9 @@ Strips colors from the output of `lolcat`.
 .TP
 .B nocol \-h
 Displays help and exits.
+.TP
+.B echo 'INFO: hello' | nocol \-s
+Strips the "INFO" log prefix from the input.
 .SH COPYRIGHT
 © 2024 Divan Visagie. License GPLv2+: GNU GPL version 2 or later <https://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
