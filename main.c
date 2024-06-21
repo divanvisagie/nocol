@@ -61,5 +61,7 @@ int main(int argc, char **argv) {
     fflush(stdout);
   }
 
+  free(args);
+
   return 0;
 }
