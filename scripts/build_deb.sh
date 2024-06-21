@@ -5,7 +5,7 @@ set -e
 
 # Variables
 PACKAGE_NAME=nocol
-VERSION=0.1.1
+VERSION=0.0.2
 ARCHITECTURE=amd64
 DEBIAN_FOLDER=debian_package
 BUILD_FOLDER=$DEBIAN_FOLDER/$PACKAGE_NAME-$ARCHITECTURE-$VERSION
@@ -28,8 +28,8 @@ Priority: optional
 Architecture: $ARCHITECTURE
 Depends: libc6 (>= 2.28)
 Maintainer: Divan Visagie <me@divanv.com>
-Description: Terminal client for Chat GPT
- This is a simple terminal client to interact with Chat GPT models.
+Description: Color stripper for terminal output
+ Fast, stream compatible color stripper.
 EOF
 
 # Copy binary and man page
