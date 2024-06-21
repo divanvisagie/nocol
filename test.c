@@ -31,6 +31,10 @@ static void test_prefix_stripper(void **state) {
   char input2[] = "ERROR: hello";
   char *output2 = get_from_prefix(input2);
   assert_string_equal(output2, "ERROR: hello");
+
+  char input3[] = "my-monorepo:: DEBUG: hello";
+  char *output3 = get_from_prefix(input3);
+  assert_string_equal(output3, "DEBUG: hello");
 }
 
 // Group all test cases together

@@ -30,16 +30,34 @@ int main(int argc, char **argv) {
     printf("%s\n", get_help());
     return 0;
   }
+  char log_buffer[BUFFER_SIZE * 8];
 
   char buffer[BUFFER_SIZE];
+
   while (fgets(buffer, BUFFER_SIZE, stdin) != NULL) {
     strip_colors(buffer);
     if (args->strip_prefix) {
-      char *tail = get_from_prefix(buffer);
-      printf("%s", tail);
+      if (contains_prefix(buffer)) {
+        if (strlen(log_buffer) == 0) {
+          strcpy(log_buffer, buffer);
+        } else {
+          char* out = get_from_prefix(log_buffer);
+          printf("%s", out);
+          fflush(stdout);
+          strcpy(log_buffer, buffer);
+        }
+      } else {
+        strcat(log_buffer, buffer);
+      } 
     } else {
       printf("%s", buffer);
     }
+    fflush(stdout);
+  }
+  
+  if (strlen(log_buffer) != 0) {
+    char* out = get_from_prefix(log_buffer);
+    printf("%s", out);
     fflush(stdout);
   }
 

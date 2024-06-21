@@ -1,8 +1,18 @@
+#include <stdbool.h>
 #include <string.h>
 
 const char *log_prefixes[] = {
     "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "BREAK"
 };
+
+bool contains_prefix(char *buffer) {
+  for (int i = 0; i < sizeof(log_prefixes) / sizeof(log_prefixes[0]); i++) {
+    if (strstr(buffer, log_prefixes[i]) == buffer) {
+      return true;
+    }
+  }
+  return false;
+}
 
 char* get_from_prefix(char *buffer) {
   for (int i = 0; i < sizeof(log_prefixes) / sizeof(log_prefixes[0]); i++) {
