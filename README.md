@@ -1,6 +1,6 @@
 # nocol
 
-**nocol** is a tool that streams text from a command with the colors stripped from it. While other tools like `ansi2txt` exist, **nocol** supports streaming logs instantly, avoiding long pauses that occur when other tools wait to fill their buffer before writing to something like `tee`. **nocol** was specifically developed to address the use case of piping logs from a Node.js service into a log file in `/tmp` to make them easier to search inside NeoVim. This makes it ideal for working with program runners like Cargo or Yarn that output colored logs.
+**nocol** is a command-line tool designed to stream text output from commands, stripping away any embedded ANSI colour codes. Unlike other tools like `ansi2txt`, **nocol** streams logs instantly, avoiding the long pauses typical of tools that buffer before writing to `tee` or other destinations. This makes **nocol** perfect for scenarios where you need real-time log processing, such as piping logs from a Node.js service into a log file in `/tmp` for easier searching within NeoVim. It's particularly handy for use with program runners like Cargo or Yarn, which produce coloured log outputs.
 
 ## Installation
 
@@ -10,12 +10,12 @@ Download the latest binary for your platform [here](https://github.com/divanvisa
 
 ### Install via Homebrew
 
-If you don't have the tap, add it with: 
+If you haven't added the tap yet, do so with:
 ```sh
 brew tap divanvisagie/homebrew-tap
 ```
 
-Then simply:
+Then, install **nocol** with:
 ```sh
 brew install nocol
 ```
@@ -24,8 +24,9 @@ brew install nocol
 
 | Command Example                 | Description                                        |
 |---------------------------------|----------------------------------------------------|
-| `echo 'hello' \| lolcat \| nocol` | Strips colors from the output of `lolcat`.       |
-| `ifconfig \| nocol`             | Strips colors from the output of `ifconfig`.      |
-| `cat colorfulfile.txt \| nocol` | Strips colors from the contents of a file.        |
+| `echo 'hello' \| lolcat \| nocol` | Strips colours from the output of `lolcat`.       |
+| `ifconfig \| nocol`             | Strips colours from the output of `ifconfig`.      |
+| `cat colorfulfile.txt \| nocol` | Strips colours from the contents of a file.        |
 
-By using **nocol**, you can ensure that your log files are clean and easily searchable, and benefit from instant streaming without the delays experienced with other color-stripping tools.
+By using **nocol**, you ensure that your log files are clean and easily searchable, while benefiting from instant streaming without the delays experienced with other colour-stripping tools.
+
